@@ -7,15 +7,14 @@ namespace Razor_Pages.Pages
     [IgnoreAntiforgeryToken]
     public class CreateModel : PageModel
     {
-       
         ApplicationContext context;
         [BindProperty]
-        public User Person { get; set; }=new();
+        public User Person { get; set; } = new();
         public CreateModel(ApplicationContext db)
         {
             context = db;
         }
-        public async Task<IActionResult>OnPostAsync()
+        public async Task<IActionResult> OnPostAsync()
         {
             context.Users.Add(Person);
             await context.SaveChangesAsync();
